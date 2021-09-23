@@ -24,6 +24,11 @@ monospace-font-name='Monospace 11'
 
 EOF
 
+if [[ -x '/usr/local/bin/first-login-local.sh' ]]; then
+  echo 'Running first-login-local.sh ..'
+  /usr/local/bin/first-login-local.sh
+fi
+
 echo 'first-login.sh finished successfully.'
 
 } > /var/log/first-login.log 2>&1
