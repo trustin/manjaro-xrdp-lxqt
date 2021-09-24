@@ -157,6 +157,8 @@ RUN pacman -S --noconfirm --needed \
   xdotool \
   xfce4-terminal \
   xorg \
+  xorg-twm \
+  xterm \
   zenity
 
 # Remove the unnecessary packages installed by meta-packages.
