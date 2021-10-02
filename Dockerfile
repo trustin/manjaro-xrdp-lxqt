@@ -53,7 +53,7 @@ RUN sed -i -e 's~^\(\(CheckSpace\|IgnorePkg\|IgnoreGroup\).*\)$~#\1~' /etc/pacma
 # Delete the 'builder' user from the base image.
 RUN userdel --force --remove builder
 
-# Install the packages independent from a desktop environment.
+# Install the common non-GUI packages.
 RUN pacman -S --noconfirm --needed \
   aws-cli \
   base-devel \
@@ -123,48 +123,61 @@ RUN pacman -S --noconfirm --needed \
   wget \
   zip
 
-# Install the desktop environment packages.
+# Install the fonts.
+RUN pacman -S --noconfirm --needed \
+  noto-fonts \
+  noto-fonts-cjk \
+  noto-fonts-emoji \
+  ttf-fira-code \
+  ttf-fira-mono \
+  ttf-fira-sans \
+  ttf-hack
+
+# Install the common GUI packages.
 RUN pacman -S --noconfirm --needed \
   dconf-editor \
   evince \
-  feathernotes \
-  featherpad \
   firefox \
   gnome-keyring \
   gnome-settings-daemon \
   gvfs-google \
   libappindicator-gtk2 \
   libappindicator-gtk3 \
-  lxqt \
-  manjaro-lxqt-config \
-  manjaro-lxqt-desktop-settings \
-  manjaro-lxqt-theme-arc-maia \
-  noto-fonts \
-  noto-fonts-cjk \
-  noto-fonts-emoji \
   pamac-gtk \
   poppler-data \
   qgnomeplatform \
-  qps \
   seahorse \
-  speedcrunch \
-  ttf-fira-code \
-  ttf-fira-mono \
-  ttf-fira-sans \
-  ttf-hack \
   wireshark-qt \
   wmctrl \
   xdg-desktop-portal \
   xdg-desktop-portal-gtk \
   xdotool \
-  xfce4-terminal \
   xorg \
   xorg-twm \
   xterm \
   zenity
 
-# Remove the unnecessary packages installed by meta-packages.
-RUN pacman -Runc --noconfirm \
+# Install input methods.
+RUN pacman -S --noconfirm --needed \
+  ibus-libpinyin \
+  ibus-anthy \
+  ibus-hangul \
+  ibus-unikey \
+  ibus-m17n \
+  manjaro-asian-input-support-ibus
+
+# Install the desktop environment packages.
+RUN pacman -S --noconfirm --needed \
+  feathernotes \
+  featherpad \
+  lxqt \
+  manjaro-lxqt-config \
+  manjaro-lxqt-desktop-settings \
+  manjaro-lxqt-theme-arc-maia \
+  qps \
+  speedcrunch \
+  xfce4-terminal && \
+pacman -Runc --noconfirm \
   kidletime \
   lxqt-powermanagement \
   qterminal \
