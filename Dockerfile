@@ -178,6 +178,17 @@ RUN pacman -S --noconfirm --needed \
   xterm \
   zenity
 
+# Install the common themes.
+RUN pacman -S --noconfirm --needed \
+  gnome-wallpapers \
+  gtk-engines \
+  gtk-engine-murrine \
+  matcha-gtk-theme \
+  kvantum-manjaro \
+  kvantum-theme-matchama \
+  papirus-maia-icon-theme \
+  xcursor-breeze
+
 # Install input methods.
 RUN pacman -S --noconfirm --needed \
   fcitx5-chinese-addons \
@@ -191,12 +202,11 @@ RUN pacman -S --noconfirm --needed \
 # Install the desktop environment packages.
 RUN pacman -S --noconfirm --needed \
   baobab \
-  feathernotes \
-  featherpad \
   lxqt \
   manjaro-lxqt-config \
   manjaro-lxqt-desktop-settings \
   manjaro-lxqt-theme-arc-maia \
+  mousepad \
   speedcrunch \
   xfce4-taskmanager \
   xfce4-terminal && \
@@ -205,17 +215,6 @@ pacman -Runc --noconfirm \
   lxqt-powermanagement \
   qterminal \
   qtermwidget
-
-# Install the themes.
-RUN pacman -S --noconfirm --needed \
-  gnome-wallpapers \
-  gtk-engines \
-  gtk-engine-murrine \
-  matcha-gtk-theme \
-  kvantum-manjaro \
-  kvantum-theme-matchama \
-  papirus-maia-icon-theme \
-  xcursor-breeze
 
 # Configure Pamac.
 RUN sed -i -e \
