@@ -204,13 +204,13 @@ RUN pacman -S --noconfirm --needed \
 # Install the desktop environment packages.
 RUN pacman -S --noconfirm --needed \
   baobab \
+  gnome-system-monitor \
   lxqt \
   manjaro-lxqt-config \
   manjaro-lxqt-desktop-settings \
   manjaro-lxqt-theme-arc-maia \
   mousepad \
   speedcrunch \
-  xfce4-taskmanager \
   xfce4-terminal && \
 pacman -Runc --noconfirm \
   kidletime \
