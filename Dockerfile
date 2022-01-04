@@ -342,4 +342,5 @@ RUN find /etc/skel -type f -print | while read F; \
 EXPOSE 22
 EXPOSE 3389
 
+STOPSIGNAL SIGRTMIN+3
 CMD ["/sbin/init"]
