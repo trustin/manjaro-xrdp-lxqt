@@ -286,7 +286,7 @@ RUN pacman -S --noconfirm --needed \
   manjaro-lxqt-theme-arc-maia \
   mousepad \
   speedcrunch \
-  xfce4-terminal && \
+  terminator && \
 pacman -Runc --noconfirm \
   kidletime \
   lxqt-powermanagement \
